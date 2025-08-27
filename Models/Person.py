@@ -6,7 +6,7 @@ from sqlalchemy import (
 from sqlalchemy.orm import declarative_base, relationship, sessionmaker
 import  random, uuid, datetime, requests, re
 from passlib.context import CryptContext
-from Run import session, Base
+from .Run import session, Base
 #-------------------------------------------------------------------------------------------------------
 
 

@@ -7,7 +7,7 @@ from sqlalchemy.orm import declarative_base, relationship, sessionmaker
 import faker, random, uuid, datetime, requests, re
 from faker import Faker
 from passlib.context import CryptContext
-from Run import Base, session
+from .Run import Base, session
 import uuid
 #-------------------------------------------------------------------------------------------------------
 
