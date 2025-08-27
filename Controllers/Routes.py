@@ -6,8 +6,7 @@ from flask_jwt_extended import (
     JWTManager, create_access_token,
     jwt_required, get_jwt_identity
 )
-
-
+import sys
 # Dynamic importer
 
 def import_outside_directory(module_name, file_or_dir_path):
@@ -31,6 +30,8 @@ try:
     from BookManAPI.Models import *
     import BookManAPI.Models as Models
     from BookManAPI.Services import Helper as Helper
+    for module in sys.modules:
+        print(module)
 except Exception as e:
     HELPER_PATH = r"C:\Users\USER\OneDrive\Desktop\BookManAPI\Services\Helper.py"
     MODELS_PATH = r"C:\Users\USER\OneDrive\Desktop\BookManAPI\Models"
