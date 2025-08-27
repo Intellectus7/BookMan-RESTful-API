@@ -8,6 +8,10 @@ from flask_jwt_extended import (
 )
 import sys
 # Dynamic importer
+import sys, os
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+print(os.path.abspath(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+print("Directory supposedly added... Again.")
 
 def import_outside_directory(module_name, file_or_dir_path):
     # If it's a directory, use __init__.py
@@ -25,12 +29,19 @@ def import_outside_directory(module_name, file_or_dir_path):
 
 for module in sys.modules:
     print(module)
-
+if "BookManAPI" not in sys.modules:
+    BookModule = os.path.abspath(os.path.normpath(r"C:\Users\USER\OneDrive\Desktop\BookManAPI"))
+    sys.path.append(BookModule)
+    print("Last attempt made")
+    for module in sys.modules:
+        print(module)
+    if "BookManAPI" not in sys.modules:
+        print("Failed. I''m sick andd tired of this.")
 # Import Helpers + Models
 try:
-    from BookManAPI.Models import *
-    import BookManAPI.Models as Models
-    from BookManAPI.Services import Helper as Helper
+    from Models import *
+    import Models as Models
+    from Services import Helper as Helper
 except Exception as e:
     HELPER_PATH = r"C:\Users\USER\OneDrive\Desktop\BookManAPI\Services\Helper.py"
     MODELS_PATH = r"C:\Users\USER\OneDrive\Desktop\BookManAPI\Models"

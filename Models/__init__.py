@@ -61,16 +61,16 @@
 # #     "run", "update", "delete", "add",
 # #     "find_table", "find_table_by_key", "bool_table_check"
 # # ]
-# from .Books import Book
-# from .Person import Person
-# from .Run import (
-#     session, run, update, delete, add,
-#     find_table, find_table_by_key,
-#     bool_table_check, pwd_context, Base
-#     )
-# __all__ = [
-#     "Book", "Person",
-#      "session", "Base", "pwd_context",
-#      "run", "update", "delete", "add",
-#      "find_table", "find_table_by_key", "bool_table_check"
-#  ]
+from .Books import Book
+from .Person import Person
+from .Run import (
+    session, run, update, delete, add,
+    find_table, find_table_by_key,
+    bool_table_check, pwd_context, Base
+    )
+__all__ = [
+    "Book", "Person",
+     "session", "Base", "pwd_context",
+     "run", "update", "delete", "add",
+     "find_table", "find_table_by_key", "bool_table_check"
+ ]
