@@ -23,15 +23,14 @@ def import_outside_directory(module_name, file_or_dir_path):
     spec.loader.exec_module(module)
     return module
 
-
+for module in sys.modules:
+    print(module)
 
 # Import Helpers + Models
 try:
     from BookManAPI.Models import *
     import BookManAPI.Models as Models
     from BookManAPI.Services import Helper as Helper
-    for module in sys.modules:
-        print(module)
 except Exception as e:
     HELPER_PATH = r"C:\Users\USER\OneDrive\Desktop\BookManAPI\Services\Helper.py"
     MODELS_PATH = r"C:\Users\USER\OneDrive\Desktop\BookManAPI\Models"
