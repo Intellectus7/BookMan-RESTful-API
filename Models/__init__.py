@@ -68,7 +68,7 @@ from .Run import (
     find_table, find_table_by_key,
     bool_table_check, pwd_context, Base
     )
- __all__ = [
+__all__ = [
     "Book", "Person",
      "session", "Base", "pwd_context",
      "run", "update", "delete", "add",
