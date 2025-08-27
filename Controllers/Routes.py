@@ -27,12 +27,17 @@ def import_outside_directory(module_name, file_or_dir_path):
 
 
 # Import Helpers + Models
+try:
+    from BookManAPI.Models import *
+    import BookManAPI.Models as Models
+    from BookManAPI.Services import Helper as Helper
+except Exception as e:
+    HELPER_PATH = r"C:\Users\USER\OneDrive\Desktop\BookManAPI\Services\Helper.py"
+    MODELS_PATH = r"C:\Users\USER\OneDrive\Desktop\BookManAPI\Models"
 
-HELPER_PATH = r"C:\Users\USER\OneDrive\Desktop\BookManAPI\Services\Helper.py"
-MODELS_PATH = r"C:\Users\USER\OneDrive\Desktop\BookManAPI\Models"
-
-Helper = import_outside_directory("Helper", HELPER_PATH)
-Models = import_outside_directory("Models", MODELS_PATH)
+    Helper = import_outside_directory("Helper", HELPER_PATH)
+    Models = import_outside_directory("Models", MODELS_PATH)
+    
 Helper.MODEL_STARTED = True
 Models.run()
 Helper.MODEL_STARTED = True
