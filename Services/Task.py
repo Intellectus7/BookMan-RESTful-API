@@ -4,7 +4,7 @@ from flask_jwt_extended import create_access_token, get_jwt_identity
 from werkzeug.security import generate_password_hash, check_password_hash
 import Models
 from Models import session
-import Services.Helper
+import Services.Helper as Helper
 
 
 

@@ -82,8 +82,8 @@ except ImportError:
 from Models import session, Base, pwd_context
 
 MODEL_STARTED = True
-
-
+storage = localStorage("local_storage")
+KEYS = storage.generate("KEYS", [])
 
 def key_gen():
     global MODEL_STARTED
