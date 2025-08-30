@@ -1,4 +1,4 @@
-import os, sys, importlib.util, random, uuid, secrets
+import os, sys, importlib.util, random, uuid, secrets, shelve, dbm
 
 # --- Dynamic import helper ---
 def import_outside_directory(module_name, file_or_dir_path):
