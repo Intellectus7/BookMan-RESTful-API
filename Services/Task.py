@@ -15,7 +15,7 @@ def register_user(data, crypt):
     if not Username or not Password:
         return jsonify({"error": "Username and Password required"}), 400
 
-    if Models.Person.query.filter_by(Username=Username).first():
+    if session.query(Models.Person).filter_by(Username=Username).first():
         return jsonify({"message": "Username already exists"}), 409
 
     hashed = crypt.generate_password_hash(Password).decode("utf-8")
