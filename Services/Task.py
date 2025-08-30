@@ -3,6 +3,7 @@ from flask import jsonify
 from flask_jwt_extended import create_access_token, get_jwt_identity
 from werkzeug.security import generate_password_hash, check_password_hash
 import Models
+from Models import session
 import Services.Helper
 
 
@@ -23,7 +24,8 @@ def register_user(data, crypt):
         Username=Username,
         Password=hashed
     )
-    Models.add(new_user)
+    session.add(new_user)
+    session.commit()
     return jsonify({"message": f"User {Username} created successfully"}), 201
 
 
@@ -31,7 +33,7 @@ def login_user(data, crypt):
     Username = data.get("Username")
     Password = data.get("Password")
 
-    user = Models.Person.query.filter_by(Username=Username).first()
+    user = session.query(Models.Person).filter_by(Username=Username).first()
     if not user:
         return jsonify({"error": "User not found in database"}), 404
 
