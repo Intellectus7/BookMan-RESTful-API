@@ -3,12 +3,9 @@ from flask import jsonify
 from flask_jwt_extended import create_access_token, get_jwt_identity
 from werkzeug.security import generate_password_hash, check_password_hash
 import Models
-import Helper
+import Services.Helper
 
 
-# ======================
-# Auth services
-# ======================
 
 def register_user(data, crypt):
     Username = data.get("Username")
@@ -45,9 +42,7 @@ def login_user(data, crypt):
     return jsonify(access_token=token)
 
 
-# ======================
-# Book services
-# ======================
+
 
 def get_books():
     books = Models.Book.query.all()
