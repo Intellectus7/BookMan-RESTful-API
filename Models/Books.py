@@ -22,9 +22,9 @@ class Book(Base):
     Author = Column(String(100), nullable=False, default="Anonymous")
     def to_dict(self):
         return {
-            "BookId": BookId,
-            "Title": Title,
-            "Description": Description,
-            "Author": Author
+            "BookId": self.BookId,
+            "Title": self.Title,
+            "Description": self.Description,
+            "Author": self.Author
         }
 #--------------------------------------------------------------------

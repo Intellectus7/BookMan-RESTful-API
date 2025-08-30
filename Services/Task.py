@@ -45,7 +45,8 @@ def login_user(data, crypt):
 
 
 def get_books():
-    books = Models.Book.query.all()
+    from Models import session
+    books = session.query(Models.Book).all()
     if not books:
         return jsonify({"error": "No books found"}), 404
     return jsonify([book.to_dict() for book in books])
@@ -63,18 +64,18 @@ def create_book(data, current_user):
 
 
 def get_book(ido):
-    book = Models.Book.query.filter_by(BookId=ido).first()
+    book = session.query(Models.Book).filter_by(BookId=ido).first()
     if not book:
-        book = Models.Book.query.filter_by(Title=ido).first()
+        book = session.query(Models.Book).filter_by(Title=ido).first()
     if not book:
-        book = Models.Book.query.filter_by(Author=ido).first()
+        book = session.query(Models.Book).filter_by(Author=ido).first()
     if not book:
         return jsonify({"error": "Book not found"}), 404
     return jsonify(book.to_dict())
 
 
 def update_book(ido, data, current_user):
-    book = Models.Book.query.filter_by(BookId=ido).first()
+    book = session.query(Models.Book).filter_by(BookId=ido).first()
     if not book:
         return jsonify({"error": "Book not found"}), 404
     if book.Author != current_user:
@@ -87,7 +88,7 @@ def update_book(ido, data, current_user):
 
 
 def delete_book(ido, current_user):
-    book = Models.Book.query.filter_by(BookId=ido).first()
+    book = session.query(Models.Book).filter_by(BookId=ido).first()
     if not book:
         return jsonify({"error": "Book not found"}), 404
     if book.Author != current_user:
