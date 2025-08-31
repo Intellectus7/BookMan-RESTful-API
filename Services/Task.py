@@ -61,7 +61,8 @@ def create_book(data, current_user):
         Description=data.get("Description"),
         Author=current_user,
     )
-    Models.add(new_book)
+    print(new_book.to_dict())
+    session.add(new_book)
     return jsonify({"message": "Book created successfully"}), 201
 
 

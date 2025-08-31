@@ -42,8 +42,12 @@ def find_table_by_key(tableClass, keyName, value):
 def find_table(tableClass, primaryKey, theUser):
     return session.query(tableClass).filter_by(primaryKey=theUser).first()
 def add(*args):
-    session.add_all(args)
-    session.commit()
+    try:
+        session.add_all(args)
+        session.commit()
+    except Exception as e:
+        session.add(args)
+        session.commit()
 
 
 
