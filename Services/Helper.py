@@ -90,22 +90,23 @@ def key_gen():
     if not MODEL_STARTED:
         MODEL_STARTED = True
         Models.start()
-    uui = uuid.uuid4()
-    promise = secrets.token_hex(32)
-    hex_uui = uuid.uuid4().hex
-    hex_secrets = secrets.token_urlsafe(32)
-    secret = str(uui) + promise + hex_uui + hex_secrets
-    secret_list = list(secret)
-    index = random.randrange(0, len(secret_list))
-    secret_list[index] = secret_list[index].upper()
-    index2 = index - random.randrange(0, 10)
-    if index2 >= 0:
-        secret_list[index2] = secret_list[index2].lower()
-    final_secret = "".join(secret_list)
-    if final_secret in KEYS:
-        return key_gen()
-    KEYS.append(final_secret)
-    return final_secret
+    # uui = uuid.uuid4()
+    # promise = secrets.token_hex(32)
+    # hex_uui = uuid.uuid4().hex
+    # hex_secrets = secrets.token_urlsafe(32)
+    # secret = str(uui) + promise + hex_uui + hex_secrets
+    # secret_list = list(secret)
+    # index = random.randrange(0, len(secret_list))
+    # secret_list[index] = secret_list[index].upper()
+    # index2 = index - random.randrange(0, 10)
+    # if index2 >= 0:
+    #     secret_list[index2] = secret_list[index2].lower()
+    # final_secret = "".join(secret_list)
+    # if final_secret in KEYS:
+    #     return key_gen()
+    # KEYS.append(final_secret)
+    # return final_secret
+    return random.randrange(0, 100000)
 def identify(username, password):
     global MODEL_STARTED
     if not MODEL_STARTED:

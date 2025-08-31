@@ -63,6 +63,7 @@ def create_book(data, current_user):
     )
     print(new_book.to_dict())
     session.add(new_book)
+    session.commit()
     return jsonify({"message": "Book created successfully"}), 201
 
 
@@ -86,7 +87,7 @@ def update_book(ido, data, current_user):
 
     book.Title = data.get("Title", book.Title)
     book.Description = data.get("Description", book.Description)
-    Models.session.commit()
+    session.commit()
     return jsonify({"message": "Book updated", "book": book.to_dict()})
 
 
